@@ -1,10 +1,11 @@
 package com.auca;
 
-import com.auca.Models.*;
-import com.auca.dao.*;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
-import static org.junit.Assert.*;
+import org.junit.Test;
+
+import com.auca.Models.LocationType;
+import com.auca.dao.LocationDao;
 
 public class LocationTest {
     
@@ -15,7 +16,7 @@ public class LocationTest {
         locationDao = new LocationDao();
     }
     
-    // Test successful hierarchical saving
+    
     //@Test
     public void testSaveProvinceSuccessfully() {
         String result = locationDao.saveLocationWithParentCode("PROV001", "SOUTHERN Province", LocationType.PROVINCE, null);
