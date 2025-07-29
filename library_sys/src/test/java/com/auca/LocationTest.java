@@ -1,9 +1,11 @@
 package com.auca;
 
 import static org.junit.Assert.assertEquals;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.auca.Models.Location;
 import com.auca.Models.LocationType;
 import com.auca.dao.LocationDao;
 
@@ -14,6 +16,16 @@ public class LocationTest {
     @Before
     public void setUp() {
         locationDao = new LocationDao();
+        // Set up test data
+        locationDao.saveLocationWithParentCode("PROV001", "Southern Province", LocationType.PROVINCE, null);
+        locationDao.saveLocationWithParentCode("DIST001", "Kayonza District", LocationType.DISTRICT, "PROV001");
+        locationDao.saveLocationWithParentCode("DIST002", "Muhanga District", LocationType.DISTRICT, "PROV001");
+    }
+    
+    @After
+    public void tearDown() {
+        // Clean up test data if needed
+        locationDao = null;
     }
     
     
