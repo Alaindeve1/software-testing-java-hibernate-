@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.auca.LocationTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 39.29 s <<< FAILURE! - in com.auca.LocationTest
+testSaveSectorWithDistrictParentSuccessfully(com.auca.LocationTest)  Time elapsed: 38.544 s  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[Location saved Successfully]> but was:<[Error: Parent location with code DIST002 not found]>
+	at com.auca.LocationTest.testSaveSectorWithDistrictParentSuccessfully(LocationTest.java:42)
+

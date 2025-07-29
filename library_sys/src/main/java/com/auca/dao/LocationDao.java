@@ -96,7 +96,7 @@ public class LocationDao {
         }
     }
     
-    // Private helper method for validation
+   
     private String validateLocationHierarchy(Location location) {
         LocationType type = location.getLocationType();
         Location parent = location.getParent();
