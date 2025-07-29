@@ -1,5 +1,7 @@
 package com.auca.dao;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -32,6 +34,54 @@ public class LocationDao {
     }
     
     // Method to get province name from village ID
+    /**
+     * Retrieves all districts that belong to a specific province
+     * @param provinceId The UUID of the province
+     * @return List of Location objects representing districts
+     */
+    @SuppressWarnings("unchecked")
+    public List<Location> getAllDistrictsByProvinceId(UUID provinceId) {
+        Session session = null;
+        try {
+            session = getSession();
+            String hql = "FROM Location l WHERE l.locationType = :type AND l.parent.locationId = :provinceId";
+            Query<Location> query = session.createQuery(hql, Location.class);
+            query.setParameter("type", LocationType.DISTRICT);
+            query.setParameter("provinceId", provinceId);
+            return query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+    
+    /**
+     * Retrieves a location by its name (case-insensitive exact match)
+     * @param name The name of the location to find
+     * @return The Location object if found, null otherwise
+     */
+    public Location getLocationByName(String name) {
+        Session session = null;
+        try {
+            session = getSession();
+            String hql = "FROM Location WHERE LOWER(locationName) = LOWER(:name)";
+            Query<Location> query = session.createQuery(hql, Location.class);
+            query.setParameter("name", name);
+            return query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+    }
+    
     public String getProvinceNameByVillageId(UUID villageId) {
         try {
             Session session = connection.getSession();
