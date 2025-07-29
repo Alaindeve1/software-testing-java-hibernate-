@@ -43,7 +43,7 @@ public class LocationDao {
     public List<Location> getAllDistrictsByProvinceId(UUID provinceId) {
         Session session = null;
         try {
-            session = getSession();
+            session = connection.getSession();
             String hql = "FROM Location l WHERE l.locationType = :type AND l.parent.locationId = :provinceId";
             Query<Location> query = session.createQuery(hql, Location.class);
             query.setParameter("type", LocationType.DISTRICT);
@@ -67,7 +67,7 @@ public class LocationDao {
     public Location getLocationByName(String name) {
         Session session = null;
         try {
-            session = getSession();
+            session = connection.getSession();
             String hql = "FROM Location WHERE LOWER(locationName) = LOWER(:name)";
             Query<Location> query = session.createQuery(hql, Location.class);
             query.setParameter("name", name);

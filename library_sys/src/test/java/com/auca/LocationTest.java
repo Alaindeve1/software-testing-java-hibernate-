@@ -10,7 +10,6 @@ import com.auca.Models.LocationType;
 import com.auca.dao.LocationDao;
 
 import java.util.List;
-import java.util.UUID;
 
 public class LocationTest {
     
@@ -71,7 +70,7 @@ public class LocationTest {
     @Test
     public void testGetAllDistrictsByProvinceId() {
         // Get the province ID
-        Location province = locationDao.getLocationByCode("PROV001");
+        Location province = locationDao.getLocationByCodePublic("PROV001");
         assertNotNull("Province should exist", province);
         
         // Get districts for the province
