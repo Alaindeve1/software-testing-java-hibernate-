@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.Before;
 import static org.junit.Assert.*;
 import java.util.List;
+import java.util.UUID;
 
 public class RoomShelfDaoTest {
     
@@ -70,5 +71,30 @@ public class RoomShelfDaoTest {
         List<Shelf> shelves = shelfDao.getAllShelves();
         assertNotNull(shelves);
         assertTrue(shelves.size() > 0);
+    }
+    
+    @Test
+    public void testCountBooksInRoom() {
+        // Save the room and shelf first
+        roomDao.saveRoom(testRoom);
+        shelfDao.saveShelf(testShelf);
+        
+        // Create and save some books on the shelf
+        BookDao bookDao = new BookDao();
+        Book book1 = new Book("Java Programming", "John Doe", "1234567890", "Tech Books", 
+                             java.time.LocalDate.now(), 1, BookStatus.AVAILABLE, testShelf);
+        Book book2 = new Book("Python Basics", "Jane Smith", "0987654321", "Tech Books", 
+                             java.time.LocalDate.now(), 1, BookStatus.AVAILABLE, testShelf);
+        
+        // Save the books
+        bookDao.saveBook(book1);
+        bookDao.saveBook(book2);
+        
+        // Test the count
+        int bookCount = roomDao.countBooksInRoom(testRoom.getRoomId());
+        
+        // Verify the count is correct
+        assertTrue("Book count should be greater than 0", bookCount > 0);
+        assertTrue("Book count should be at least 2", bookCount >= 2);
     }
 }

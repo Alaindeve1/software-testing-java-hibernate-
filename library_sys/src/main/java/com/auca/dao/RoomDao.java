@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import com.auca.Models.Room;
+import com.auca.Models.Shelf;
 
 public class RoomDao {
     
@@ -95,6 +96,40 @@ public class RoomDao {
         } catch (Exception e) {
             e.printStackTrace();
             return "Error deleting room: " + e.getMessage();
+        }
+    }
+    
+    /**
+     * Counts the number of books in a specific room
+     * @param roomId The ID of the room to count books in
+     * @return The number of books in the room, or -1 if an error occurs
+     */
+    public int countBooksInRoom(UUID roomId) {
+        try {
+            Session session = connection.getSession();
+            
+            // Get all shelves in the room
+            Query<Shelf> query = session.createQuery(
+                "FROM Shelf WHERE room.roomId = :roomId", 
+                Shelf.class
+            );
+            query.setParameter("roomId", roomId);
+            List<Shelf> shelves = query.getResultList();
+            
+            // Count all books in these shelves
+            int totalBooks = 0;
+            for (Shelf shelf : shelves) {
+                if (shelf.getBooks() != null) {
+                    totalBooks += shelf.getBooks().size();
+                }
+            }
+            
+            session.close();
+            return totalBooks;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1; // Return -1 to indicate an error occurred
         }
     }
 }
