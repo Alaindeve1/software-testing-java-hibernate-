@@ -97,4 +97,37 @@ public class RoomShelfDaoTest {
         assertTrue("Book count should be greater than 0", bookCount > 0);
         assertTrue("Book count should be at least 2", bookCount >= 2);
     }
+    
+    @Test
+    public void testAssignBookToShelf() {
+        // 1. First, save the room and shelf
+        roomDao.saveRoom(testRoom);
+        shelfDao.saveShelf(testShelf);
+        
+        // 2. Create a new book
+        BookDao bookDao = new BookDao();
+        Book book = new Book("Test Book", "Test Author", "1234567890123", "Test Publisher",
+                           java.time.LocalDate.now(), 1, BookStatus.AVAILABLE, testShelf);
+        
+        // 3. Save the book (this assigns it to the shelf)
+        String saveResult = bookDao.saveBook(book);
+        assertEquals("Book should be saved successfully", "Book saved Successfully", saveResult);
+        
+        // 4. Retrieve the book to verify the assignment
+        Book savedBook = bookDao.getBookByIsbn("1234567890123");
+        assertNotNull("Saved book should not be null", savedBook);
+        assertNotNull("Book should be assigned to a shelf", savedBook.getShelf());
+        assertEquals("Book should be assigned to the correct shelf", 
+                    testShelf.getId(), savedBook.getShelf().getId());
+        
+        // 5. Verify the book is in the shelf's book list
+        Shelf updatedShelf = shelfDao.getShelfById(testShelf.getId());
+        assertNotNull("Shelf should have books", updatedShelf.getBooks());
+        assertFalse("Shelf's book list should not be empty", updatedShelf.getBooks().isEmpty());
+        
+        // 6. Check if our book is in the shelf's book list
+        boolean bookFound = updatedShelf.getBooks().stream()
+            .anyMatch(b -> b.getBookId().equals(savedBook.getBookId()));
+        assertTrue("Book should be in the shelf's book list", bookFound);
+    }
 }
