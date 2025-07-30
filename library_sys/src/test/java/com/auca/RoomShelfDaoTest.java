@@ -81,9 +81,9 @@ public class RoomShelfDaoTest {
         
         // Create and save some books on the shelf
         BookDao bookDao = new BookDao();
-        Book book1 = new Book("Java Programming", "John Doe", "1234567890", "Tech Books", 
+        Book book1 = new Book("Java Programming", "alain", "1234567890", "Tech Books", 
                              java.time.LocalDate.now(), 1, BookStatus.AVAILABLE, testShelf);
-        Book book2 = new Book("Python Basics", "Jane Smith", "0987654321", "Tech Books", 
+        Book book2 = new Book("Python Basics", "kevin", "0987654321", "Tech Books", 
                              java.time.LocalDate.now(), 1, BookStatus.AVAILABLE, testShelf);
         
         // Save the books
