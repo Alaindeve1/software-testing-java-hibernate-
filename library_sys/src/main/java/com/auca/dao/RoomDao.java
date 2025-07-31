@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import com.auca.Models.Room;
-import com.auca.Models.Shelf;
+import com.auca.dao.Connection;
 
 public class RoomDao {
     
@@ -99,33 +99,26 @@ public class RoomDao {
         }
     }
     
-    /**
-     * Counts the number of books in a specific room
-     * @param roomId The ID of the room to count books in
-     * @return The number of books in the room, or -1 if an error occurs
-     */
+   
     public int countBooksInRoom(UUID roomId) {
         try {
             Session session = connection.getSession();
             
-            // Get all shelves in the room
-            Query<Shelf> query = session.createQuery(
-                "FROM Shelf WHERE room.roomId = :roomId", 
-                Shelf.class
+            // Use a single query to count all books in the room
+            Query<Long> query = session.createQuery(
+                "SELECT COUNT(b) " +
+                "FROM Book b " +
+                "JOIN b.shelf s " +
+                "JOIN s.room r " +
+                "WHERE r.roomId = :roomId", 
+                Long.class
             );
             query.setParameter("roomId", roomId);
-            List<Shelf> shelves = query.getResultList();
             
-            // Count all books in these shelves
-            int totalBooks = 0;
-            for (Shelf shelf : shelves) {
-                if (shelf.getBooks() != null) {
-                    totalBooks += shelf.getBooks().size();
-                }
-            }
-            
+            Long count = query.uniqueResult();
             session.close();
-            return totalBooks;
+            
+            return count != null ? count.intValue() : 0;
             
         } catch (Exception e) {
             e.printStackTrace();
