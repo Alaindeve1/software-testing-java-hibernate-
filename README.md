@@ -1,76 +1,73 @@
 <div align="center">
   <h1>📚 AUCA Library Management System</h1>
-  <p><em>Empowering Knowledge Access at Adventist University of Central Africa</em></p>
+  <p><em>A Learning Project: Mastering Java, Hibernate & JUnit Testing</em></p>
   
   [![Java](https://img.shields.io/badge/Java-17-007396?logo=java&logoColor=white)](https://www.java.com/)
+  [![JUnit](https://img.shields.io/badge/JUnit-4.13-25A162?logo=junit5&logoColor=white)](https://junit.org/)
   [![Hibernate](https://img.shields.io/badge/Hibernate-6.6.15-59666C?logo=hibernate&logoColor=white)](https://hibernate.org/)
-  [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-13-336791?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
   [![Maven](https://img.shields.io/badge/Maven-3.8+-C71A36?logo=apache-maven&logoColor=white)](https://maven.apache.org/)
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 </div>
 
 <div align="center">
-  <p>A modern, efficient library management solution designed to streamline operations and enhance user experience at AUCA.</p>
+  <p>An educational project focusing on Java, Hibernate ORM, and comprehensive JUnit testing practices.</p>
 </div>
 
 ## 📋 Project Overview
 
 The AUCA Library System is a Java-based application that provides an efficient way to manage library operations including book management, member management, and borrowing processes. The system is built using Java 17 and utilizes Hibernate ORM for database interactions with a PostgreSQL database.
 
-## ✨ Key Features
+## 🎯 Learning Objectives
 
 <div align="center">
   <table>
     <tr>
-      <td align="center">📖 <strong>Book Management</strong></td>
-      <td>Add, update, and manage book inventory with detailed cataloging</td>
+      <td align="center">🧪 <strong>JUnit Testing</strong></td>
+      <td>Comprehensive test cases for DAO and service layers</td>
     </tr>
     <tr>
-      <td align="center">👥 <strong>Member Portal</strong></td>
-      <td>Comprehensive user accounts with role-based access control</td>
+      <td align="center">🔍 <strong>Test Coverage</strong></td>
+      <td>Focused on achieving high test coverage for critical components</td>
     </tr>
     <tr>
-      <td align="center">🔄 <strong>Borrowing System</strong></td>
-      <td>Automated tracking of loans, returns, and fine calculations</td>
+      <td align="center">🔄 <strong>CRUD Operations</strong></td>
+      <td>Testing Create, Read, Update, and Delete operations</td>
     </tr>
     <tr>
-      <td align="center">📍 <strong>Smart Location</strong></td>
-      <td>Efficient room and shelf management for physical resources</td>
-    </tr>
-    <tr>
-      <td align="center">🔒 <strong>Security</strong></td>
-      <td>Secure authentication and authorization system</td>
-    </tr>
-    <tr>
-      <td align="center">📊 <strong>Reporting</strong></td>
-      <td>Generate insights on library operations and user activities</td>
+      <td align="center">🧠 <strong>Best Practices</strong></td>
+      <td>Following TDD principles and clean test architecture</td>
     </tr>
   </table>
 </div>
 
 ## 🛠️ Tech Stack
 
+### Core Technologies
 <div align="center">
   <table>
     <tr>
-      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" width="60" height="60" alt="Java" /></td>
-      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hibernate/hibernate-original-wordmark.svg" width="60" height="60" alt="Hibernate" /></td>
-      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg" width="60" height="60" alt="PostgreSQL" /></td>
-      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original-wordmark.svg" width="60" height="60" alt="Maven" /></td>
+      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" width="50" height="50" alt="Java" /></td>
+      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hibernate/hibernate-original-wordmark.svg" width="50" height="50" alt="Hibernate" /></td>
+      <td align="center"><img src="https://junit.org/junit5/assets/img/junit5-logo.png" width="50" height="50" alt="JUnit" /></td>
+      <td align="center"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maven/maven-original-wordmark.svg" width="50" height="50" alt="Maven" /></td>
     </tr>
     <tr>
-      <td align="center">Java 17</td>
-      <td align="center">Hibernate ORM</td>
-      <td align="center">PostgreSQL</td>
-      <td align="center">Maven</td>
+      <td>Java 17</td>
+      <td>Hibernate ORM 6.6</td>
+      <td>JUnit 4.13</td>
+      <td>Maven 3.8+</td>
     </tr>
   </table>
 </div>
 
-### Additional Technologies
-- **Security**: Spring Security Crypto 6.0.2
-- **Testing**: JUnit 4.11
-- **Build**: Maven Wrapper
+### Testing Tools
+- **Unit Testing**: JUnit 4.13
+- **Test Coverage**: JaCoCo
+- **Database Testing**: H2 in-memory DB
+- **Build Tool**: Maven Surefire Plugin
+
+### Development Tools
+- **IDE**: Any Java IDE (IntelliJ, Eclipse, VS Code)
 - **Version Control**: Git
 
 ## 🗃️ Database Schema
@@ -127,25 +124,61 @@ mvn exec:java -Dexec.mainClass="com.auca.App"
 📦 src/
 ├── 📂 main/
 │   ├── 📂 java/com/auca/
-│   │   ├── 📂 Models/         # Entity classes (Book, User, Borrower, etc.)
+│   │   ├── 📂 Models/         # Entity classes
 │   │   ├── 📂 dao/            # Data Access Objects
-│   │   ├── 📂 util/           # Utility classes
-│   │   └── 📄 App.java        # Main application class
+│   │   └── 📂 util/           # Utility classes
 │   └── 📂 resources/          # Configuration files
-└── 📂 test/                   # Test classes
+└── 📂 test/
+    └── 📂 java/com/auca/
+        ├── BookDaoTest.java     # Tests for Book DAO
+        ├── BorrowerDaoTest.java # Tests for Borrower DAO
+        ├── LocationTest.java    # Location related tests
+        └── RoomShelfDaoTest.java # Room and Shelf tests
 ```
 
-## 🧪 Testing
+### Test Naming Conventions
+- Test classes: `{ClassName}Test.java`
+- Test methods: `test{MethodName}_When{Scenario}_Should{ExpectedBehavior}()`
+- Example: `testSaveBook_WhenTitleIsNull_ShouldThrowException()`
 
-Run the complete test suite with coverage:
+## 🧪 Testing Approach
+
+This project emphasizes test-driven development (TDD) principles with comprehensive JUnit test coverage. Here's how testing is implemented:
+
+### 🔍 Test Structure
+
+```
+📦 src/test/java/com/auca/
+├── BookDaoTest.java
+├── BorrowerDaoTest.java
+├── LocationTest.java
+└── RoomShelfDaoTest.java
+```
+
+### 🚀 Running Tests
 
 ```bash
 # Run all tests
 mvn test
 
-# Generate test coverage report
+# Run a specific test class
+mvn test -Dtest=BookDaoTest
+
+# Generate test coverage report (requires JaCoCo plugin)
 mvn jacoco:report
 ```
+
+### 📊 Test Coverage
+
+Key areas covered by tests:
+- **DAO Layer**: CRUD operations for all entities
+- **Business Logic**: Validation and business rules
+- **Edge Cases**: Boundary conditions and error handling
+
+### 🛠 Testing Tools
+- JUnit 4.13 for test framework
+- H2 in-memory database for integration tests
+- Maven Surefire Plugin for test execution
 
 ## 🤝 Contributing
 
