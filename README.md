@@ -199,11 +199,8 @@ This project is licensed under the [MIT License](LICENSE).
 <div align="center">
   <p>Have questions or need support?</p>
   <p>
-    <a href="mailto:your-email@example.com">
+    <a href="mailto:alainndizeye1@gmail.com">
       <img src="https://img.icons8.com/color/48/000000/gmail-new.png" width="30" height="30" alt="Email"/>
-    </a>
-    <a href="https://github.com/Alaindeve1" target="_blank">
-      <img src="https://img.icons8.com/fluent/48/000000/github.png" width="30" height="30" alt="GitHub"/>
     </a>
   </p>
   <p>We'd love to hear from you!</p>
@@ -212,6 +209,6 @@ This project is licensed under the [MIT License](LICENSE).
 ---
 
 <div align="center">
-  <p>Built with ❤️ by the AUCA Development Team</p>
-  <p>© 2025 AUCA Library System. All rights reserved.</p>
+  <p>developed by Alain Ndizeye</p>
+  
 </div>
