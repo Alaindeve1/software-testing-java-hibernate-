@@ -29,12 +29,12 @@ public class UserTest {
         
         // Create a test user
         testUser.setPersonId("1199080123456789");
-        testUser.setFirstName("ben");
-        testUser.setLastName("yonyine");
-        testUser.setUserName("mibambwe");
+        testUser.setFirstName("alain");
+        testUser.setLastName("deve");
+        testUser.setUserName("alaindeve");
         testUser.setPassword("password1234");
-        testUser.setPhoneNumber("0781239467");
-        //testUser.setEmail("mugabolionel8@gmail.com");
+        testUser.setPhoneNumber("0799324850");
+        
         testUser.setRole(Role.STUDENT);
         testUser.setGender(Gender.MALE);
         testUser.setLocation(testLocation); // Set the persisted location
@@ -55,7 +55,7 @@ public class UserTest {
         userDao.saveUser(testUser);
         
         // Retrieve user and check password is hashed
-        User retrievedUser = userDao.getUserByUserName("lionel");
+        User retrievedUser = userDao.getUserByUserName("alaindeve");
         assertNotNull("User should be retrieved", retrievedUser);
         assertNotEquals("Password should be hashed, not plain text", originalPassword, retrievedUser.getPassword());
         
