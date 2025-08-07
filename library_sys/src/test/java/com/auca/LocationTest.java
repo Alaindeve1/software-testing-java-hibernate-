@@ -40,7 +40,7 @@ public class LocationTest {
     @Test
     public void testSaveDistrictInDifferentProvinces() {      
         // Create Kayonza district in Eastern Province
-        String result1 = locationDao.saveLocationWithParentCode("DIST001", "Kayonza District", LocationType.DISTRICT, "PROV002");
+        String result1 = locationDao.saveLocationWithParentCode("DIST002", "rustiro District", LocationType.DISTRICT, "PROV002");
         assertEquals("Location saved Successfully", result1);
         
         // Create Muhanga district in Southern Province
