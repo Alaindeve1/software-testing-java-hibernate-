@@ -77,12 +77,12 @@ public class UserTest {
         userDao.saveUser(testUser);
         
         // Test correct authentication
-        User authenticatedUser = userDao.authenticateUser("lionel", originalPassword);
+        User authenticatedUser = userDao.authenticateUser("alaindeve", originalPassword);
         assertNotNull("Authentication should succeed with correct password", authenticatedUser);
-        assertEquals("lionel", authenticatedUser.getFirstName());
+        assertEquals("alain", authenticatedUser.getFirstName());
         
         // Test wrong authentication
-        User failedAuth = userDao.authenticateUser("lionel", "wrongpassword");
+        User failedAuth = userDao.authenticateUser("alaindeve", "wrongpassword");
         assertNull("Authentication should fail with wrong password", failedAuth);
         
         System.out.println("✅ Authentication test passed - password hashing working correctly");
@@ -98,15 +98,15 @@ public class UserTest {
         userDao.saveUser(testUser);
         
         // Change password
-        String result = userDao.changePassword("lionel", originalPassword, newPassword);
+        String result = userDao.changePassword("alaindeve", originalPassword, newPassword);
         assertEquals("User updated Successfully", result);
         
         // Test authentication with new password
-        User authenticatedUser = userDao.authenticateUser("lionel", newPassword);
+        User authenticatedUser = userDao.authenticateUser("alaindeve", newPassword);
         assertNotNull("Authentication should work with new password", authenticatedUser);
         
         // Test that old password no longer works
-        User oldPasswordAuth = userDao.authenticateUser("lionel", originalPassword);
+        User oldPasswordAuth = userDao.authenticateUser("  alaindeve", originalPassword);
         assertNull("Old password should no longer work", oldPasswordAuth);
         
         System.out.println("✅ Password change test passed");

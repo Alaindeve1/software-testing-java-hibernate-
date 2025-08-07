@@ -13,7 +13,7 @@ public class MembershipDaoTestFixed {
     private MembershipDao membershipDao;
     private MembershipTypeDao membershipTypeDao;
     private UserDao userDao;
-    //private LocationDao locationDao;
+    
     
     private User testUser;
     private MembershipType goldMembershipType;
