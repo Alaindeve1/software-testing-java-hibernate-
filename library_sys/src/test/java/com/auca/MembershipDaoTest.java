@@ -27,7 +27,7 @@ public class MembershipDaoTest {
         userDao = new UserDao();
         
         
-        // Don't create membership types here - they should be shared across multiple memberships
+       
     }
     
     // Helper method to get or create GOLD membership type (shared across tests)
@@ -88,13 +88,13 @@ public class MembershipDaoTest {
         // Test with non-existent person ID
         String result = membershipDao.saveMembershipWithPersonId(
             "MEM002", 
-            "9999999999999999", // Non-existent person ID
+            "123456789", // Non-existent person ID
             getGoldMembershipType(), 
             LocalDate.now(), 
             LocalDate.now().plusYears(1), 
             Status.APPROVED
         );
-        assertEquals("Error: User with person ID 9999999999999999 not found", result);
+        assertEquals("Error: User with person ID 123456789 not found", result);
         
         System.out.println("✅ Non-existent person ID test passed");
     }
