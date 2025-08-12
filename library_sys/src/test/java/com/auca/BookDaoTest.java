@@ -37,15 +37,15 @@ public class BookDaoTest {
         // Create test shelf
         testShelf = new Shelf();
         testShelf.setBookCategory("Test Category");
-        testShelf.setInitialStock(50);
-        testShelf.setAvailableStock(50);
+        testShelf.setInitialStock(55);
+        testShelf.setAvailableStock(55);
         testShelf.setBorrowedNumber(0);
         testShelf.setRoom(testRoom);
         shelfDao.saveShelf(testShelf);
         
         // Create test book
         testBook = new Book();
-        testBook.setTitle("Test Java Programming");
+        testBook.setTitle("Java Programming");
         testBook.setAuthor("Test Author");
         testBook.setIsbn("978-0123456789");
         testBook.setPublicationYear(2023);
