@@ -1,10 +1,18 @@
 package com.auca;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
-import com.auca.dao.*;
-import com.auca.Models.*;
+
+import com.auca.Models.Book;
+import com.auca.Models.BookStatus;
+import com.auca.Models.Room;
+import com.auca.Models.Shelf;
+import com.auca.dao.BookDao;
+import com.auca.dao.RoomDao;
+import com.auca.dao.ShelfDao;
 
 public class BookDaoTest {
     
@@ -23,7 +31,7 @@ public class BookDaoTest {
         
         // Create test room
         testRoom = new Room();
-        testRoom.setRoomCode("TEST_R001");
+        testRoom.setRoomCode("TEST_R002");
         roomDao.saveRoom(testRoom);
         
         // Create test shelf
